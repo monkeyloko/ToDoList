@@ -40,7 +40,28 @@ let renderTaskList = () =>{
     });
 }
 let toggleTask = (i) => {
+    if(arrToDo[i].completado == false){
+        arrToDo[i].tiempoCompletado = new Date();   
+    } else{
+        arrToDo[i].tiempoCompletado = null;
+    }
     arrToDo[i].completado = !arrToDo[i].completado;
-    arrToDo[i].tiempoCompletado = new Date();
+    
     renderTaskList();
+}
+function calculateFastest(){
+    var nombre = "Ninguna de las tareas fue completada";
+    var mDif = 0;
+    arrToDo.forEach((tarea, index) => {
+        if(tarea.completado){
+            aDif = tarea.tiempoCompletado - tarea.completado;
+            if(aDif > mDif){
+                mDif = aDif;
+                nombre = tarea.nombre;
+            }
+        }
+    });
+    tareaRapida = document.getElementById("fastestTask");
+    tareaRapida.innerHTML = nombre;
+
 }
