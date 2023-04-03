@@ -63,5 +63,7 @@ function calculateFastest(){
     });
     tareaRapida = document.getElementById("fastestTask");
     tareaRapida.innerHTML = nombre;
-
 }
+
+
+
