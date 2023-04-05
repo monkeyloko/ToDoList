@@ -1,6 +1,9 @@
 let arrToDo = [];
 let taskList = document.getElementById("taskList");
-let taskInput = document.getElementById("taskInput")
+let taskInput = document.getElementById("taskInput");
+
+
+
 function enviarForm(evento){
     evento.preventDefault();
     agregarTarea();
@@ -18,36 +21,47 @@ function agregarTarea() {
     };
     arrToDo.push(tarea);
     taskInput.value = "";
-    renderTaskList();
+    mostrarTaskList();
   }
 }
-let renderTaskList = () =>{
+let mostrarTaskList = () =>{
     taskList.innerHTML = "";
     arrToDo.forEach((tarea, index) => {
         const taskLi = document.createElement("li");
         if (tarea.completado) {
-            taskLi.innerHTML = `<del>${tarea.nombre} (${tarea.tiempoCreacion.toLocaleString()} - ${tarea.tiempoCompletado.toLocaleString()})</del>`;
+            taskLi.innerHTML = ` <del>${tarea.nombre}</del>`;
         } 
         else{
-            taskLi.innerHTML = `${tarea.nombre} (${tarea.tiempoCreacion.toLocaleString()})`;
+            taskLi.innerHTML = ` ${tarea.nombre}`;
         }
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.checked = tarea.completado;
-        checkbox.onchange = () => toggleTask(index);
+        checkbox.onchange = () => cambiarCompletado(index);
         taskLi.insertBefore(checkbox, taskLi.firstChild);
+        
+        const botonBorrar = document.createElement("button");
+        botonBorrar.innerText = "Borrar";
+        botonBorrar.onclick = () => deleteTask(index);
+
+        const botonEditar = document.createElement("button");
+        botonEditar.innerText = "Editar";
+        botonEditar.onclick = () => editTask(index);
+        
+        
+        taskLi.appendChild(botonBorrar);
+        taskLi.appendChild(botonEditar);
         taskList.appendChild(taskLi);
     });
 }
-let toggleTask = (i) => {
+let cambiarCompletado = (i) => {
     if(arrToDo[i].completado == false){
         arrToDo[i].tiempoCompletado = new Date();   
     } else{
         arrToDo[i].tiempoCompletado = null;
     }
     arrToDo[i].completado = !arrToDo[i].completado;
-    
-    renderTaskList();
+    mostrarTaskList();
 }
 function calculateFastest(){
     var nombre = "Ninguna de las tareas fue completada";
@@ -64,6 +78,14 @@ function calculateFastest(){
     tareaRapida = document.getElementById("fastestTask");
     tareaRapida.innerHTML = nombre;
 }
-
+let deleteTask = (index) => {
+    arrToDo.splice(index, 1);
+    mostrarTaskList();
+}
+let editTask = (index) => {
+    let newName = prompt("Enter new task name:"); 
+    arrToDo[index].nombre = newName;
+    mostrarTaskList();
+}
 
 
