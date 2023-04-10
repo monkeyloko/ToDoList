@@ -64,12 +64,12 @@ let cambiarCompletado = (i) => {
     mostrarTaskList();
 }
 function calculateFastest(){
-    var nombre = "Ninguna de las tareas fue completada";
-    var mDif = 0;
-    arrToDo.forEach((tarea, index) => {
+    let nombre = "Ninguna de las tareas fue completada";
+    let mDif = -1;
+    arrToDo.forEach((tarea) => {
         if(tarea.completado){
             aDif = tarea.tiempoCompletado - tarea.completado;
-            if(aDif > mDif){
+            if(aDif < mDif || mDif == -1){
                 mDif = aDif;
                 nombre = tarea.nombre;
             }
