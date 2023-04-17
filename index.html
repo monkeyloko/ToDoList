@@ -8,7 +8,7 @@
     <link href="style.css " rel="stylesheet">
     <title>ToDoList!</title>
   </head>
-  <body class="d-flex align-items-center ">
+  <body class="d-flex ">
     <div class="container ">
         <div class="row ">
           <div class="TODOLIST col-md-6 mx-auto ">  
@@ -18,15 +18,19 @@
                 <label for="taskInput">Nueva Tarea:</label>
                 <input type="text" class="form-control" id="taskInput">
               </div>
-              <button type="submit" class="btn btn-primary">Agregar Tarea</button>
+              <button type="submit" class="btn btn-primary agregarTarea">Agregar Tarea</button>
             </form>
             <br>
             <ul id="taskList" class="list-group">
             </ul>
+           
             <br>
+           
             <button id="fastestTaskBtn" class="btn btn-success" onclick="calculateFastest()">Tarea más rápida</button>
-            <p id="fastestTask"></p>
+            <p id="fastestTask"></p> 
+             <button id="Borrar" onclick="borrarTodo()">Borrar todo</button>
           </div>
+          
         </div>
     </div>
     <script src ="script.js"></script>
