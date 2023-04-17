@@ -59,6 +59,12 @@ input[type="text"] {
   width: 100%;
 }
 
+#Borrar{
+  background-color: #912a2a;
+}
+#Borrar:hover{
+  background-color: #a74141;
+}
 .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
@@ -121,12 +127,14 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 15px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5px;
 }
-
+.agregarTarea{
+  
+}
 button:hover {
   background-color: #c8341a;
 }
