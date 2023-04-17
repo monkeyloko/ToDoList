@@ -84,8 +84,18 @@ let deleteTask = (index) => {
 }
 let editTask = (index) => {
     let newName = prompt("Enter new task name:"); 
-    arrToDo[index].nombre = newName;
+    if(newName != null){
+        arrToDo[index].nombre = newName;
+        mostrarTaskList();
+    }
+}
+
+let borrarTodo=()=>{
+    arrToDo = [];
+    tareaRapida = document.getElementById("fastestTask");
+    tareaRapida.innerHTML = "";
     mostrarTaskList();
+   
 }
 
 
